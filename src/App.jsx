@@ -31,10 +31,11 @@ const Navbar = styled(motion.nav)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
+  background: ${props => props.scrolled ? 'rgba(10, 10, 10, 0.95)' : 'transparent'};
+  backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid ${props => props.scrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
+  transition: all 0.3s ease-in-out;
 `;
 
 const NavLinks = styled.div`
@@ -50,6 +51,8 @@ const NavLink = styled(motion.a)`
   text-transform: capitalize;
   cursor: pointer;
   position: relative;
+  text-shadow: ${props => !props.scrolled ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'};
+  transition: text-shadow 0.3s ease;
 
   &:after {
     content: '';
@@ -59,7 +62,8 @@ const NavLink = styled(motion.a)`
     width: ${props => props.active ? '100%' : '0'};
     height: 2px;
     background: white;
-    transition: width 0.3s ease;
+    box-shadow: ${props => !props.scrolled ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'};
+    transition: width 0.3s ease, box-shadow 0.3s ease;
   }
 
   &:hover:after {
@@ -88,10 +92,15 @@ const NavDot = styled(motion.div)`
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
   const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
 
   useEffect(() => {
     const handleScroll = () => {
+      // Update navbar background
+      setIsScrolled(window.scrollY > 50);
+
+      // Update active section
       const sectionElements = sections.map(section => ({
         id: section,
         element: document.getElementById(section)
@@ -133,13 +142,16 @@ function App() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
+        scrolled={isScrolled}
       >
         <NavLinks>
           {sections.map((section) => (
             <NavLink
               key={section}
+              href={`#${section}`}
               active={activeSection === section}
-              onClick={() => scrollToSection(section)}
+              scrolled={isScrolled}
+              onClick={(e) => handleNavClick(e, section)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
