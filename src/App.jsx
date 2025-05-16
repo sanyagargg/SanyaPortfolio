@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import GlobalStyles from './styles/GlobalStyles';
 
 // Components will be imported here
 import Home from './components/Home';
@@ -13,12 +14,12 @@ import Contact from './components/Contact';
 import Socials from './components/Socials';
 
 const AppContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   background: #0a0a0a;
   color: #ffffff;
+  position: relative;
 `;
 
 const Navbar = styled(motion.nav)`
@@ -127,6 +128,7 @@ function App() {
 
   return (
     <AppContainer>
+      <GlobalStyles />
       <Navbar
         initial={{ y: -100 }}
         animate={{ y: 0 }}

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const HomeSection = styled.section`
   padding-top: 70px; // Add padding for navbar
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
