@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Components will be imported here
 import Home from './components/Home';
 import About from './components/About';
+import Education from './components/Education';
+import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
@@ -85,7 +87,7 @@ const NavDot = styled(motion.div)`
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const sections = ['home', 'about', 'projects', 'resume', 'contact'];
+  const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,6 +161,8 @@ function App() {
       
       <Home />
       <About />
+      <Education />
+      <Experience />
       <Projects />
       <Resume />
       <Contact />
