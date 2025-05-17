@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const AboutSection = styled.section`
-  padding-top: 70px; // Add padding for navbar
+  padding-top: 70px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -21,65 +21,56 @@ const Container = styled(motion.div)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
 `;
 
-const ImageContainer = styled(motion.div)`
-  position: relative;
-  width: 100%;
-  height: 400px;
-  border-radius: 20px;
+const VideoContainer = styled.div`
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
   overflow: hidden;
-  
-  img {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  video {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
+
+
+
 
 const Content = styled(motion.div)`
   color: white;
+  font-family: 'DM Sans', sans-serif;
 `;
 
 const Title = styled.h2`
+  font-family: 'Migra', serif;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #fff;
+  letter-spacing: 0.05em;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-`;
 
-const SkillsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  p {
+    margin-bottom: 1.5rem;
+  }
 `;
-
-const Skill = styled(motion.span)`
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: #fff;
-`;
-
-const skills = [
-  "React.js",
-  "Node.js",
-  "JavaScript",
-  "TypeScript",
-  "HTML/CSS",
-  "SQL",
-  "Git",
-  "UI/UX Design"
-];
 
 function About() {
   return (
@@ -90,38 +81,23 @@ function About() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <ImageContainer
-          initial={{ x: -50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <img src="/profile.jpg" alt="Sanya Garg" />
-        </ImageContainer>
-        
+        <VideoContainer>
+          <video
+            src="/profile.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </VideoContainer>
+
         <Content>
           <Title>About Me</Title>
           <Description>
-          <p>I am an aspiring software engineer from Delhi and a pre-final-year student at Netaji Subhas University of Technology (formerly, NSIT). Web development, machine learning and the world of computer science in general has me hooked, and I love the challenge of turning ideas into sleek and functional applications.</p>
-          <p> </p>
-          <p>I am also a Google WE Scholar. This program shaped my journey, fueled my passion for problem-solving and now I am on a mission to write clean code and build cool projects.</p>
-          <p> </p>
-          <p>I bring determination, adaptibility, and just the right amount of stubborness to debug my code until it works.</p>
+            <p>I'm an aspiring software engineer from Delhi 🌆 and a final-year student at Netaji Subhas University of Technology 🎓. I'm currently diving into web development, ML, DL, DSA, and everything the world of Computer Science has to offer 💻✨. Sharpening my skills, solving problems, and figuring out how to make the internet a cooler place—one line of code at a time .</p>
+            <p>Graduating from the WE Program by Google & TalentSprint was a game-changer 🎯, shaping me into the problem-solver I am today 🧠. I bring determination, creativity, and the ability to adapt faster than a website loading on Vercel 🚀.</p>
+            <p>Always up for a challenge, a tech chat, or just geeking out—let's connect! 🤖💬</p>
           </Description>
-          
-          <SkillsContainer>
-            {skills.map((skill, index) => (
-              <Skill
-                key={skill}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {skill}
-              </Skill>
-            ))}
-          </SkillsContainer>
         </Content>
       </Container>
     </AboutSection>
