@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlobalStyles from './styles/GlobalStyles';
 
-
-// Components will be imported here
+// Components
 import Home from './components/Home';
 import About from './components/About';
 import Education from './components/Education';
@@ -30,8 +29,9 @@ const Navbar = styled(motion.nav)`
   right: 0;
   height: 70px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
   background: ${props => props.scrolled ? 'rgba(10, 10, 10, 0.95)' : 'transparent'};
   backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
   z-index: 1000;
@@ -41,7 +41,11 @@ const Navbar = styled(motion.nav)`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 1.2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavLink = styled(motion.a)`
@@ -72,6 +76,42 @@ const NavLink = styled(motion.a)`
   }
 `;
 
+const Hamburger = styled.div`
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  div {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+  }
+`;
+
+const MobileMenu = styled(motion.div)`
+  position: fixed;
+  top: 70px;
+  right: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  z-index: 999;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
 const DotNavigation = styled.nav`
   position: fixed;
   top: 50%;
@@ -94,11 +134,13 @@ const NavDot = styled(motion.div)`
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 50);
+      setScrolled(window.scrollY > 50);
     };
 
     const observerOptions = {
@@ -129,7 +171,7 @@ function App() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const navbarHeight = 70; // Height of the navbar
+      const navbarHeight = 70;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -140,22 +182,28 @@ function App() {
     }
   };
 
-  const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
-
   const handleNavClick = (e, section) => {
     e.preventDefault();
     scrollToSection(section);
+    setMenuOpen(false); // close menu on mobile
   };
 
   return (
     <AppContainer>
       <GlobalStyles />
+
       <Navbar
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         scrolled={scrolled}
       >
+        <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
+          <div />
+          <div />
+          <div />
+        </Hamburger>
+
         <NavLinks>
           {sections.map((section) => (
             <NavLink
@@ -173,6 +221,27 @@ function App() {
         </NavLinks>
       </Navbar>
 
+      <AnimatePresence>
+        {menuOpen && (
+          <MobileMenu
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+          >
+            {sections.map((section) => (
+              <NavLink
+                key={section}
+                href={`#${section}`}
+                active={activeSection === section}
+                onClick={(e) => handleNavClick(e, section)}
+              >
+                {section}
+              </NavLink>
+            ))}
+          </MobileMenu>
+        )}
+      </AnimatePresence>
+
       <DotNavigation>
         {sections.map((section) => (
           <NavDot
@@ -185,7 +254,7 @@ function App() {
           />
         ))}
       </DotNavigation>
-      
+
       <Home />
       <About />
       <Education />

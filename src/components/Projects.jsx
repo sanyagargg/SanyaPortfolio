@@ -147,7 +147,7 @@ function Projects() {
   return (
     <ProjectsSection id="projects">
       <Container>
-        <Title>My Projects</Title>
+        <Title>My Recent Projects</Title>
         <ProjectsGrid>
           {projects.map((project, index) => (
             <ProjectCard
