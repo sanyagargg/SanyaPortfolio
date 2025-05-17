@@ -135,12 +135,11 @@ const projects = [
     live: "https://emoticare.onrender.com/"
   },
   {
-    title: "Interior Design App",
-    description: "AI-powered room redesign tool with drag-and-drop interface.",
-    image: "/project5.jpg",
-    tech: ["React", "Node.js", "Three.js"],
-    link: "https://github.com/yourusername/project5",
-    live: "https://interiorai.example.com"
+    title: "Severity Classification of Code Smells",
+    description: "This project focuses on classifying the severity of code smells using various machine learning models, helping developers prioritize refactoring efforts. It uses techniques like regression, multinomial, and ordinal classification to measure code quality. Additionally, the LIME algorithm is used for model interpretability, making predictions easier to understand.",
+    image: "/project5.png",
+    tech: ["Python", "Scikit-learn", "XGBoost", "Naïve Bayes", "LIME", "SMOTE", "Pandas", "NumPy", "Jupyter Notebooks"],
+    link: "https://github.com/sanyagargg/Severity-Classification-of-Code-Smells",
   }
 ];
 
