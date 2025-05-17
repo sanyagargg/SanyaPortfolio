@@ -102,10 +102,11 @@ function About() {
         <Content>
           <Title>About Me</Title>
           <Description>
-            Hi! I'm Sanya, a passionate Full Stack Developer and Designer based in India. 
-            I love creating beautiful, functional, and user-friendly applications that solve 
-            real-world problems. With a strong foundation in both front-end and back-end 
-            development, I bring ideas to life through clean code and intuitive design.
+          <p>I am an aspiring software engineer from Delhi and a pre-final-year student at Netaji Subhas University of Technology (formerly, NSIT). Web development, machine learning and the world of computer science in general has me hooked, and I love the challenge of turning ideas into sleek and functional applications.</p>
+          <p> </p>
+          <p>I am also a Google WE Scholar. This program shaped my journey, fueled my passion for problem-solving and now I am on a mission to write clean code and build cool projects.</p>
+          <p> </p>
+          <p>I bring determination, adaptibility, and just the right amount of stubborness to debug my code until it works.</p>
           </Description>
           
           <SkillsContainer>

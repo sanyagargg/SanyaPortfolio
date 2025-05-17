@@ -1,62 +1,80 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
+import { MdEmail } from 'react-icons/md';
 
 const SocialsContainer = styled.div`
   position: fixed;
-  left: 2rem;
   bottom: 2rem;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 100;
+  z-index: 1000;
 `;
 
 const SocialLink = styled(motion.a)`
   color: white;
-  text-decoration: none;
   font-size: 1.5rem;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
-    opacity: 1;
+    transform: translateY(-3px);
+    color: #8ec5fc;
+    border-color: #8ec5fc;
   }
 `;
 
 const socialLinks = [
   {
-    name: 'GitHub',
+    icon: <FaGithub />,
     url: 'https://github.com/sanyagargg',
-    icon: '📂'
+    label: 'GitHub'
   },
   {
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/sanyagargg',
-    icon: '💼'
+    icon: <FaLinkedin />,
+    url: 'https://www.linkedin.com/in/sanyagargg',
+    label: 'LinkedIn'
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/sanyagargg',
-    icon: '🐦'
+    icon: <SiLeetcode />,
+    url: 'https://leetcode.com/sanyagargg',
+    label: 'LeetCode'
+  },
+  {
+    icon: <MdEmail />,
+    url: 'mailto:sanyagarg.nsut@gmail.com',
+    label: 'Email'
   }
 ];
 
 function Socials() {
   return (
     <SocialsContainer>
-      {socialLinks.map((link, index) => (
+      {socialLinks.map((social, index) => (
         <SocialLink
-          key={link.name}
-          href={link.url}
+          key={social.label}
+          href={social.url}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 0.7, x: 0 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.1 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          {link.icon}
+          {social.icon}
         </SocialLink>
       ))}
     </SocialsContainer>

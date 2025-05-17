@@ -21,6 +21,13 @@ const GlobalStyles = createGlobalStyle`
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
   }
 `;
 

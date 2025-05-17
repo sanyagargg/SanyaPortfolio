@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlobalStyles from './styles/GlobalStyles';
 
+
 // Components will be imported here
 import Home from './components/Home';
 import About from './components/About';
@@ -17,9 +18,9 @@ const AppContainer = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #0a0a0a;
   color: #ffffff;
   position: relative;
+  min-height: 100vh;
 `;
 
 const Navbar = styled(motion.nav)`
