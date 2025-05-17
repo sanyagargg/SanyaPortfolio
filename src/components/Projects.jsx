@@ -5,7 +5,9 @@ const ProjectsSection = styled.section`
   padding-top: 70px; // Add padding for navbar
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  background: url('/projectsbg.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
 `;
 
 const Container = styled.div`
@@ -32,13 +34,16 @@ const ProjectCard = styled(motion.div)`
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const ProjectImage = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -50,17 +55,21 @@ const ProjectImage = styled.div`
 const ProjectInfo = styled.div`
   padding: 1.5rem;
   color: white;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 const ProjectTitle = styled.h3`
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const ProjectDescription = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
+  flex-grow: 1;
 `;
 
 const TechStack = styled.div`
@@ -76,27 +85,62 @@ const TechTag = styled.span`
   font-size: 0.8rem;
 `;
 
+const ProjectLinks = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    color: #1e90ff;
+    font-size: 0.9rem;
+    text-decoration: underline;
+
+    &:hover {
+      color: #63b3ed;
+    }
+  }
+`;
+
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce platform with user authentication, product management, and payment integration.",
-    image: "/project1.jpg",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    link: "https://github.com/yourusername/project1"
+    title: "Charismatic Electronics",
+    description: "A full-stack custom e-commerce platform for Charismatic Electronics, a company specializing in transformers and custom electrical products.",
+    image: "/project1.png",
+    tech: ["React", "Express.js","Node.js", "MongoDB", "NodeMailer"],
+    link: "https://github.com/sanyagargg/ecommerce-website",
+    live: "https://charismaticelectronics.vercel.app/"
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates and team features.",
-    image: "/project2.jpg",
-    tech: ["React", "Firebase", "Material-UI"],
-    link: "https://github.com/yourusername/project2"
+    title: "DesignGenie",
+    description: "An AI-powered full-stack web application that allows users to generate and visualize stunning interior designs based on their preferences.",
+    image: "/project2.png",
+    tech: ["Next.js", "Firebase", "Tailwind CSS", "Neon Postgres SQL", "Drizzle ORM","Replicate.com for API","Stripe","Clerk" ],
+    link: "https://github.com/sanyagargg/DesignGenie",
+    live: "https://taskapp.example.com"
   },
   {
     title: "Portfolio Website",
-    description: "A modern portfolio website built with React and Three.js for interactive 3D elements.",
-    image: "/project3.jpg",
-    tech: ["React", "Three.js", "Styled Components"],
-    link: "https://github.com/yourusername/project3"
+    description: "A modern portfolio website built with React",
+    image: "/project3.png",
+    tech: ["React", "Styled Components"],
+    link: "https://github.com/sanyagargg/SanyaPortfolio",
+    live: "https://portfolio.example.com"
+  },
+  {
+    title: "EmotiCare",
+    description: "It provides ease-of-use to potential viewers who wish to learn about mental health, help themselves in their mental struggles, help others, or support campaigns promoting mental health awareness.",
+    image: "/project4.png",
+    tech: ["HTML", "CSS", "Javascript", "Node.js", "Express"],
+    link: "https://github.com/sanyagargg/EmotiCare",
+    live: "https://emoticare.onrender.com/"
+  },
+  {
+    title: "Interior Design App",
+    description: "AI-powered room redesign tool with drag-and-drop interface.",
+    image: "/project5.jpg",
+    tech: ["React", "Node.js", "Three.js"],
+    link: "https://github.com/yourusername/project5",
+    live: "https://interiorai.example.com"
   }
 ];
 
@@ -126,6 +170,12 @@ function Projects() {
                     <TechTag key={tech}>{tech}</TechTag>
                   ))}
                 </TechStack>
+                <ProjectLinks>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">GitHub</a>
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">Live Site</a>
+                  )}
+                </ProjectLinks>
               </ProjectInfo>
             </ProjectCard>
           ))}
