@@ -92,35 +92,39 @@ const NavDot = styled(motion.div)`
 `;
 
 function App() {
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update navbar background
-      setIsScrolled(window.scrollY > 50);
-
-      // Update active section
-      const sectionElements = sections.map(section => ({
-        id: section,
-        element: document.getElementById(section)
-      }));
-
-      const currentSection = sectionElements.find(({ element }) => {
-        if (!element) return false;
-        const rect = element.getBoundingClientRect();
-        return rect.top <= 100 && rect.bottom >= 100;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection.id);
-      }
+      const offset = window.scrollY;
+      setScrolled(offset > 50);
     };
 
+    const observerOptions = {
+      rootMargin: '-50% 0px',
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          setActiveSection(sectionId);
+          window.history.replaceState(null, null, `#${sectionId}`);
+        }
+      });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(section => sectionObserver.observe(section));
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      sections.forEach(section => sectionObserver.unobserve(section));
+    };
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -136,6 +140,13 @@ function App() {
     }
   };
 
+  const sections = ['home', 'about', 'education', 'experience', 'projects', 'resume', 'contact'];
+
+  const handleNavClick = (e, section) => {
+    e.preventDefault();
+    scrollToSection(section);
+  };
+
   return (
     <AppContainer>
       <GlobalStyles />
@@ -143,7 +154,7 @@ function App() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        scrolled={isScrolled}
+        scrolled={scrolled}
       >
         <NavLinks>
           {sections.map((section) => (
@@ -151,7 +162,7 @@ function App() {
               key={section}
               href={`#${section}`}
               active={activeSection === section}
-              scrolled={isScrolled}
+              scrolled={scrolled}
               onClick={(e) => handleNavClick(e, section)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -170,6 +181,7 @@ function App() {
             onClick={() => scrollToSection(section)}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
+            title={section}
           />
         ))}
       </DotNavigation>
