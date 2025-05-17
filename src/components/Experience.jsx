@@ -50,7 +50,24 @@ const Position = styled.h4`
 const Period = styled.p`
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+`;
+
+const LinksWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+`;
+
+const LinkTag = styled.a`
+  color: #ffa500;
+  text-decoration: underline;
+  font-size: 0.95rem;
+
+  &:hover {
+    color: #ffcc80;
+  }
 `;
 
 const Description = styled.div`
@@ -68,7 +85,7 @@ const BulletPoint = styled.li`
   padding-left: 1.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.6;
-  
+
   &:before {
     content: '•';
     position: absolute;
@@ -82,17 +99,27 @@ const experience = [
     company: "Charismatic Electronics",
     position: "Full Stack Developer Intern",
     period: "January 2025 - April 2025",
+    links: {
+      live: "https://charismaticelectronics.vercel.app/", 
+      github: "https://charismaticelectronics.vercel.app/", 
+      certificate: "https://charismaticelectronics.vercel.app/"
+    },
     achievements: [
-    "Developed a responsive, full-featured e-commerce platform for transformer and custom electrical products using the MERN stack (MongoDB, Express, React, Node.js), ensuring optimal performance across various devices and screen sizes.",
-    "Built a robust ‘Custom Design’ form that allows users to upload files, input design specifications, and submit requests for custom electrical products, integrating Nodemailer to send email alerts upon form submission.",
-    "Implemented MongoDB data storage to efficiently manage user orders, and custom design requests, optimizing query performance and ensuring reliable data retrieval.",
-    "Followed best practices for version control using Git and collaborated closely with the design team to ensure seamless integration of front-end and back-end components."
-  ]
+      "Developed a responsive, full-featured e-commerce platform for transformer and custom electrical products using the MERN stack (MongoDB, Express, React, Node.js), ensuring optimal performance across various devices and screen sizes.",
+      "Built a robust ‘Custom Design’ form that allows users to upload files, input design specifications, and submit requests for custom electrical products, integrating Nodemailer to send email alerts upon form submission.",
+      "Implemented MongoDB data storage to efficiently manage user orders, and custom design requests, optimizing query performance and ensuring reliable data retrieval.",
+      "Followed best practices for version control using Git and collaborated closely with the design team to ensure seamless integration of front-end and back-end components."
+    ]
   },
   {
     company: "DRDO (Defence Research & Development Organization)",
-    position: "Intern",
+    position: "Software Intern",
     period: "May 2025 – July 2025",
+    links: {
+      live: "https://charismaticelectronics.vercel.app/", 
+      github: "https://charismaticelectronics.vercel.app/", 
+      certificate: "https://charismaticelectronics.vercel.app/"   
+    },
     achievements: [
       "Designed and developed a quantum simulation software using Python and Qiskit to model key quantum protocols (entanglement, teleportation, etc.)",
       "Built modular simulation architecture for creating quantum circuits, running statevector simulations, and visualizing results",
@@ -100,7 +127,7 @@ const experience = [
       "Integrated data visualization tools (Matplotlib, Bloch spheres) to support interpretation of quantum state evolution",
       "Followed software engineering best practices: version control (Git), code reviews, and functional testing"
     ]
-  }  
+  }
 ];
 
 function Experience() {
@@ -128,6 +155,11 @@ function Experience() {
               <Company>{item.company}</Company>
               <Position>{item.position}</Position>
               <Period>{item.period}</Period>
+              <LinksWrapper>
+                <LinkTag href={item.links.live} target="_blank" rel="noopener noreferrer">Live Site</LinkTag>
+                <LinkTag href={item.links.github} target="_blank" rel="noopener noreferrer">GitHub</LinkTag>
+                <LinkTag href={item.links.certificate} target="_blank" rel="noopener noreferrer">Certificate</LinkTag>
+              </LinksWrapper>
               <Description>
                 <BulletList>
                   {item.achievements.map((achievement, i) => (
