@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlobalStyles from './styles/GlobalStyles';
 
-// Components
 import Home from './components/Home';
 import About from './components/About';
 import Education from './components/Education';
@@ -29,7 +28,7 @@ const Navbar = styled(motion.nav)`
   right: 0;
   height: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 1rem;
   background: ${props => props.scrolled ? 'rgba(10, 10, 10, 0.95)' : 'transparent'};
@@ -41,8 +40,7 @@ const Navbar = styled(motion.nav)`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 1.2rem;
-
+  gap: 1.5rem;
   @media (max-width: 768px) {
     display: none;
   }
@@ -57,7 +55,6 @@ const NavLink = styled(motion.a)`
   cursor: pointer;
   position: relative;
   text-shadow: ${props => !props.scrolled ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'};
-  transition: text-shadow 0.3s ease;
 
   &:after {
     content: '';
@@ -78,9 +75,12 @@ const NavLink = styled(motion.a)`
 
 const Hamburger = styled.div`
   display: none;
+  position: absolute;
+  left: 1rem;
   cursor: pointer;
   flex-direction: column;
   gap: 5px;
+  z-index: 1100;
 
   @media (max-width: 768px) {
     display: flex;
@@ -97,7 +97,7 @@ const Hamburger = styled.div`
 const MobileMenu = styled(motion.div)`
   position: fixed;
   top: 70px;
-  right: 0;
+  left: 0;
   width: 100%;
   background: rgba(10, 10, 10, 0.95);
   display: flex;
@@ -158,13 +158,13 @@ function App() {
       });
     }, observerOptions);
 
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach(section => sectionObserver.observe(section));
+    const observedSections = document.querySelectorAll('section[id]');
+    observedSections.forEach(section => sectionObserver.observe(section));
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      sections.forEach(section => sectionObserver.unobserve(section));
+      observedSections.forEach(section => sectionObserver.unobserve(section));
     };
   }, []);
 
@@ -172,20 +172,16 @@ function App() {
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 70;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      const offset = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
 
   const handleNavClick = (e, section) => {
     e.preventDefault();
     scrollToSection(section);
-    setMenuOpen(false); // close menu on mobile
+    setMenuOpen(false); // close mobile menu
   };
 
   return (
@@ -205,7 +201,7 @@ function App() {
         </Hamburger>
 
         <NavLinks>
-          {sections.map((section) => (
+          {sections.map(section => (
             <NavLink
               key={section}
               href={`#${section}`}
@@ -243,7 +239,7 @@ function App() {
       </AnimatePresence>
 
       <DotNavigation>
-        {sections.map((section) => (
+        {sections.map(section => (
           <NavDot
             key={section}
             active={activeSection === section}
