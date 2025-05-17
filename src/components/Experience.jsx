@@ -79,25 +79,28 @@ const BulletPoint = styled.li`
 
 const experience = [
   {
-    company: "Tech Company Name",
-    position: "Software Developer Intern",
-    period: "June 2022 - August 2022",
+    company: "Charismatic Electronics",
+    position: "Full Stack Developer Intern",
+    period: "January 2025 - April 2025",
     achievements: [
-      "Developed and maintained full-stack web applications using React and Node.js",
-      "Implemented responsive UI components and improved website performance by 30%",
-      "Collaborated with senior developers on code reviews and feature implementations"
-    ]
+    "Developed a responsive, full-featured e-commerce platform for transformer and custom electrical products using the MERN stack (MongoDB, Express, React, Node.js), ensuring optimal performance across various devices and screen sizes.",
+    "Built a robust ‘Custom Design’ form that allows users to upload files, input design specifications, and submit requests for custom electrical products, integrating Nodemailer to send email alerts upon form submission.",
+    "Implemented MongoDB data storage to efficiently manage user orders, and custom design requests, optimizing query performance and ensuring reliable data retrieval.",
+    "Followed best practices for version control using Git and collaborated closely with the design team to ensure seamless integration of front-end and back-end components."
+  ]
   },
   {
-    company: "Another Company Name",
-    position: "Frontend Developer",
-    period: "September 2022 - Present",
+    company: "DRDO (Defence Research & Development Organization)",
+    position: "Intern",
+    period: "May 2025 – July 2025",
     achievements: [
-      "Led the development of a new customer-facing dashboard using React and TypeScript",
-      "Reduced page load time by 40% through code optimization and lazy loading",
-      "Mentored junior developers and conducted technical interviews"
+      "Designed and developed a quantum simulation software using Python and Qiskit to model key quantum protocols (entanglement, teleportation, etc.)",
+      "Built modular simulation architecture for creating quantum circuits, running statevector simulations, and visualizing results",
+      "Implemented teleportation and Bell state generation protocols with clear circuit diagrams and measurement analysis",
+      "Integrated data visualization tools (Matplotlib, Bloch spheres) to support interpretation of quantum state evolution",
+      "Followed software engineering best practices: version control (Git), code reviews, and functional testing"
     ]
-  }
+  }  
 ];
 
 function Experience() {
