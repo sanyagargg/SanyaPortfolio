@@ -9,12 +9,11 @@ const EducationSection = styled.section`
   color: #ffffff;
   position: relative;
 
-  /* Optional: Overlay effect for better readability */
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 10, 0.7); /* dark overlay */
+    background: rgba(10, 10, 10, 0.7);
     z-index: 0;
   }
 
@@ -23,7 +22,6 @@ const EducationSection = styled.section`
     z-index: 1;
   }
 `;
-
 
 const Container = styled.div`
   max-width: 1200px;
@@ -40,7 +38,7 @@ const Timeline = styled.div`
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -99,13 +97,14 @@ const Period = styled.p`
   margin-bottom: 1rem;
 `;
 
-const Description = styled.p`
+const CGPA = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
+  margin-bottom: 1rem;
 `;
 
-const CGPA = styled.p`
+const Description = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
@@ -117,13 +116,16 @@ const education = [
     degree: "Bachelor of Technology in Computer Science",
     period: "2022 - 2026",
     CGPA: "CGPA : 7.9",
-    description: "Relevant coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Operating Systems, Artificial Intelligence, Machine Learning, Deep Learning, Cryptography, Data Analytics with Python"
+    description:
+      "Relevant coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Operating Systems, Artificial Intelligence, Machine Learning, Deep Learning, Cryptography, Data Analytics with Python"
   },
   {
-    school: "Your High School Name",
-    degree: "High School Diploma",
-    period: "2017 - 2019",
-    description: "Graduated with distinction in Mathematics and Computer Science"
+    school: "OPG World School",
+    degree: "High School",
+    period: "2018 - 2022", 
+    percentage10: "95.6%",
+    percentage12: "93.2%",
+    description: " "
   }
 ];
 
@@ -153,6 +155,9 @@ function Education() {
                 <SchoolName>{item.school}</SchoolName>
                 <Degree>{item.degree}</Degree>
                 <Period>{item.period}</Period>
+                {item.CGPA && <CGPA>{item.CGPA}</CGPA>}
+                {item.percentage10 && <CGPA>10th Grade: {item.percentage10}</CGPA>}
+                {item.percentage12 && <CGPA>12th Grade: {item.percentage12}</CGPA>}
                 <Description>{item.description}</Description>
               </TimelineContent>
             </TimelineItem>
