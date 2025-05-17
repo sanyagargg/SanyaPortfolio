@@ -5,9 +5,25 @@ const EducationSection = styled.section`
   padding-top: 70px;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  background: url('/educationbg.jpg') no-repeat center center/cover;
   color: #ffffff;
+  position: relative;
+
+  /* Optional: Overlay effect for better readability */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.7); /* dark overlay */
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
+
 
 const Container = styled.div`
   max-width: 1200px;
@@ -89,12 +105,19 @@ const Description = styled.p`
   line-height: 1.6;
 `;
 
+const CGPA = styled.p`
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+`;
+
 const education = [
   {
-    school: "Your University Name",
+    school: "Netaji Subhas University of Technology (formerly NSIT)",
     degree: "Bachelor of Technology in Computer Science",
-    period: "2019 - 2023",
-    description: "Relevant coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Operating Systems"
+    period: "2022 - 2026",
+    CGPA: "CGPA : 7.9",
+    description: "Relevant coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Operating Systems, Artificial Intelligence, Machine Learning, Deep Learning, Cryptography, Data Analytics with Python"
   },
   {
     school: "Your High School Name",
