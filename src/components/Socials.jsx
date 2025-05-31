@@ -44,17 +44,17 @@ const socialLinks = [
   },
   {
     icon: <FaLinkedin />,
-    url: 'https://www.linkedin.com/in/sanyagargg',
+    url: 'https://www.linkedin.com/in/sanya-garg-397902276/',
     label: 'LinkedIn'
   },
   {
     icon: <SiLeetcode />,
-    url: 'https://leetcode.com/sanyagargg',
+    url: 'https://leetcode.com/u/s161204/',
     label: 'LeetCode'
   },
   {
     icon: <MdEmail />,
-    url: 'mailto:sanyagarg.nsut@gmail.com',
+    url: 'mailto:sanyaa.gargg@gmail.com',
     label: 'Email'
   }
 ];

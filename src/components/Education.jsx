@@ -115,7 +115,7 @@ const education = [
     school: "Netaji Subhas University of Technology (formerly NSIT)",
     degree: "Bachelor of Technology in Computer Science",
     period: "2022 - 2026",
-    CGPA: "CGPA : 7.9",
+    CGPA: "CGPA : 8",
     description:
       "Relevant coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Operating Systems, Artificial Intelligence, Machine Learning, Deep Learning, Cryptography, Data Analytics with Python"
   },
@@ -123,7 +123,7 @@ const education = [
     school: "OPG World School",
     degree: "High School",
     period: "2018 - 2022", 
-    percentage10: "95.6%",
+    percentage10: "96.1%",
     percentage12: "93.2%",
     description: " "
   }
