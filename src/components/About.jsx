@@ -1,43 +1,73 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-// Section wrapper
+// Background image
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/AboutMe.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+`;
+
+// Overlay
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.4);
+  z-index: 1;
+`;
+
+// Section container
 const AboutSection = styled.section`
+  position: relative;
   padding-top: 70px;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  overflow: hidden;
 `;
 
-// Main container
+// Grid layout
 const Container = styled(motion.div)`
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  z-index: 2;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    text-align: center;
   }
 `;
 
-// Circular video container
-const VideoContainer = styled.div`
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
+// Profile image
+const ImageContainer = styled(motion.div)`
+  width: 330px;
+  height: 330px;
+  border-radius: 100%;
   overflow: hidden;
-  background: #222;
+  background: rgba(10, 10, 10, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 60px; 
 
-  video {
+
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -46,35 +76,49 @@ const VideoContainer = styled.div`
   @media (max-width: 768px) {
     width: 250px;
     height: 250px;
+    margin: 0 auto;
   }
 `;
 
-// Content wrapper
+// Text block
 const Content = styled(motion.div)`
   color: white;
-  font-family: 'DM Sans', sans-serif;
+  margin-left: -160px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    text-align: center;
+  }
 `;
 
-// Heading
+// Title styling
 const Title = styled.h2`
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
   color: #fff;
-  letter-spacing: 0.05em;
+  line-height: 1.6;
 `;
 
+// Description text
 const Description = styled.div`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 95%;
 
   p {
     margin-bottom: 1.5rem;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.55rem;
+    max-width: 100%;
+  }
 `;
 
-// Skills container
+// Skills wrapper
 const SkillsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -82,16 +126,17 @@ const SkillsContainer = styled.div`
   margin-top: 2rem;
 `;
 
-// Each skill tag
+// Single skill pill
 const Skill = styled(motion.span)`
+  font-family: 'Press Start 2P', cursive;
   background: rgba(255, 255, 255, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   color: #fff;
 `;
 
-// Skill list
+// Skills list
 const skills = [
   "React.js",
   "Node.js",
@@ -106,30 +151,37 @@ const skills = [
 function About() {
   return (
     <AboutSection id="about">
+      <BackgroundImage />
+      <Overlay />
+
       <Container
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        {/* Circular Video */}
-        <VideoContainer>
-          <video
-            src="/profile.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        </VideoContainer>
+        {/* Profile Image */}
+        <ImageContainer
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <img src="/profile.jpg" alt="Profile" />
+        </ImageContainer>
 
-        {/* Content */}
-        <Content>
+        {/* About Content */}
+        <Content
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <Title>About Me</Title>
           <Description>
-            <p>I'm an aspiring software engineer from Delhi 🌆 and a final-year student at Netaji Subhas University of Technology 🎓. I'm currently diving into web development, ML, DL, DSA, and everything the world of Computer Science has to offer 💻✨. Sharpening my skills, solving problems, and figuring out how to make the internet a cooler place—one line of code at a time.</p>
-            <p>Graduating from the WE Program by Google & TalentSprint was a game-changer 🎯, shaping me into the problem-solver I am today 🧠. I bring determination, creativity, and the ability to adapt faster than a website loading on Vercel 🚀.</p>
-            <p>Always up for a challenge, a tech chat, or just geeking out—let's connect! 🤖💬</p>
+            <p>I’m a final-year Computer Science student at NSUT, Delhi, with a passion for building, learning, and solving problems through code. From web development to machine learning and deep learning, I’m diving deep into everything tech has to offer.</p>
+            <p>The WE Program by Google & TalentSprint was a turning point in my journey—it sharpened my problem-solving skills and pushed me to grow fast. I love tackling challenges, adapting on the fly, and bringing creativity into every project I take on.</p>
+            <p>Whether it’s building something new or exploring complex algorithms, I’m always looking to grow and collaborate. Let’s connect and create something meaningful!</p>
           </Description>
 
           <SkillsContainer>

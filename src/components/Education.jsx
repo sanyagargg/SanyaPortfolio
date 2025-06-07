@@ -2,18 +2,22 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const EducationSection = styled.section`
+  position: relative;
   padding-top: 70px;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: url('/educationbg.jpg') no-repeat center center/cover;
+  background-image: url('/educationbg1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #ffffff;
-  position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 10, 0.7);
+    background-color: rgba(10, 10, 10, 0.4); 
     z-index: 0;
   }
 
@@ -29,14 +33,15 @@ const Container = styled.div`
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 2.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
   margin-bottom: 3rem;
   text-align: center;
 `;
 
 const Timeline = styled.div`
   position: relative;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 
   &::before {
@@ -71,43 +76,48 @@ const TimelineItem = styled(motion.div)`
 `;
 
 const TimelineContent = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.6); /* made it darker */
+  padding: 2rem;
   border-radius: 8px;
-  width: 80%;
+  width: 85%;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 const SchoolName = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   color: #ffffff;
 `;
 
 const Degree = styled.h4`
-  font-size: 1.1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 `;
 
 const Period = styled.p`
-  font-size: 0.9rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 1rem;
 `;
 
 const CGPA = styled.p`
-  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
+  line-height: 1.8;
   margin-bottom: 1rem;
 `;
 
 const Description = styled.p`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
 `;
 
 const education = [
