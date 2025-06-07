@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlobalStyles from './styles/GlobalStyles';
 
+
 import Home from './components/Home';
 import About from './components/About';
 import Education from './components/Education';
@@ -187,7 +188,6 @@ function App() {
   return (
     <AppContainer>
       <GlobalStyles />
-
       <Navbar
         initial={{ y: -100 }}
         animate={{ y: 0 }}
