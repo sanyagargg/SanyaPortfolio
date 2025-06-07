@@ -43,6 +43,7 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 3rem 2rem;
   text-align: center;
+  margin-top: 80px; 
 `;
 
 const Title = styled.h2`
@@ -88,7 +89,7 @@ function Contact() {
     <ContactSection id="contact">
       {/* Background Video */}
       <video autoPlay muted loop playsInline>
-        <source src="/contact-bg-video.mp4" type="video/mp4" />
+        <source src="/contact.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
