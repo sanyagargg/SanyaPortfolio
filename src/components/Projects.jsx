@@ -2,12 +2,28 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ProjectsSection = styled.section`
-  padding-top: 70px; // Add padding for navbar
+  font-family: 'Press Start 2P', cursive;
+  padding-top: 70px;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: url('/projectsbg.jpg') no-repeat center center;
+  background: url('/projectsbg.png') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
+  color: #fff;
+
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 10, 10, 0.4); /* dark overlay */
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const Container = styled.div`
@@ -16,8 +32,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
-  color: #fff;
+  font-size: 1.2rem;
   margin-bottom: 3rem;
   text-align: center;
 `;
@@ -26,17 +41,17 @@ const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 1rem;
 `;
 
 const ProjectCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 `;
 
 const ProjectImage = styled.div`
@@ -61,13 +76,13 @@ const ProjectInfo = styled.div`
 `;
 
 const ProjectTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
 `;
 
 const ProjectDescription = styled.p`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 1rem;
   flex-grow: 1;
 `;
@@ -80,19 +95,20 @@ const TechStack = styled.div`
 
 const TechTag = styled.span`
   background: rgba(255, 255, 255, 0.1);
-  padding: 0.3rem 0.8rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 15px;
-  font-size: 0.8rem;
+  font-size: 0.55rem;
 `;
 
 const ProjectLinks = styled.div`
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 
   a {
     color: #1e90ff;
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     text-decoration: underline;
 
     &:hover {
@@ -104,7 +120,7 @@ const ProjectLinks = styled.div`
 const projects = [
   {
     title: "Charismatic Electronics",
-    description: "A full-stack custom e-commerce platform for Charismatic Electronics, a company specializing in transformers and custom electrical products.",
+    description: "Full-stack e-commerce platform for transformer & custom electrical products.",
     image: "/project1.png",
     tech: ["React", "Express.js","Node.js", "MongoDB", "NodeMailer"],
     link: "https://github.com/sanyagargg/ecommerce-website",
@@ -112,15 +128,15 @@ const projects = [
   },
   {
     title: "DesignGenie",
-    description: "An AI-powered full-stack web application that allows users to generate and visualize stunning interior designs based on their preferences.",
+    description: "AI-powered interior design generator based on user preferences.",
     image: "/project2.png",
-    tech: ["Next.js", "Firebase", "Tailwind CSS", "Neon Postgres SQL", "Drizzle ORM","Replicate.com for API","Stripe","Clerk" ],
+    tech: ["Next.js", "Firebase", "Tailwind CSS", "Neon SQL", "Drizzle", "Replicate.com", "Stripe", "Clerk"],
     link: "https://github.com/sanyagargg/DesignGenie",
     live: "https://taskapp.example.com"
   },
   {
     title: "Portfolio Website",
-    description: "A modern portfolio website built with React",
+    description: "A modern personal portfolio built with React & Styled Components.",
     image: "/project3.png",
     tech: ["React", "Styled Components"],
     link: "https://github.com/sanyagargg/SanyaPortfolio",
@@ -128,7 +144,7 @@ const projects = [
   },
   {
     title: "EmotiCare",
-    description: "It provides ease-of-use to potential viewers who wish to learn about mental health, help themselves in their mental struggles, help others, or support campaigns promoting mental health awareness.",
+    description: "Mental health awareness platform with self-help and campaign tools.",
     image: "/project4.png",
     tech: ["HTML", "CSS", "Javascript", "Node.js", "Express"],
     link: "https://github.com/sanyagargg/EmotiCare",
@@ -136,9 +152,9 @@ const projects = [
   },
   {
     title: "Severity Classification of Code Smells",
-    description: "This project focuses on classifying the severity of code smells using various machine learning models, helping developers prioritize refactoring efforts. It uses techniques like regression, multinomial, and ordinal classification to measure code quality. Additionally, the LIME algorithm is used for model interpretability, making predictions easier to understand.",
+    description: "ML-based severity classifier for code smells using models and LIME.",
     image: "/project5.png",
-    tech: ["Python", "Scikit-learn", "XGBoost", "Naïve Bayes", "LIME", "SMOTE", "Pandas", "NumPy", "Jupyter Notebooks"],
+    tech: ["Python", "Scikit-learn", "XGBoost", "Naïve Bayes", "LIME", "SMOTE", "Pandas", "NumPy"],
     link: "https://github.com/sanyagargg/Severity-Classification-of-Code-Smells",
   }
 ];

@@ -2,11 +2,30 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ExperienceSection = styled.section`
+  font-family: 'Press Start 2P', cursive;
+  position: relative;
   padding-top: 70px;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  background-image: url('/experience.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #ffffff;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 10, 10, 0.4); /* dark overlay */
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const Container = styled.div`
@@ -15,7 +34,8 @@ const Container = styled.div`
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 2.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
   margin-bottom: 3rem;
   text-align: center;
 `;
@@ -28,27 +48,30 @@ const ExperienceGrid = styled.div`
 `;
 
 const ExperienceCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
 `;
 
 const Company = styled.h3`
-  font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #ffffff;
 `;
 
 const Position = styled.h4`
-  font-size: 1.2rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
 `;
 
 const Period = styled.p`
-  font-size: 0.9rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 0.5rem;
 `;
@@ -61,9 +84,10 @@ const LinksWrapper = styled.div`
 `;
 
 const LinkTag = styled.a`
+  font-family: 'Press Start 2P', cursive;
   color: #ffa500;
   text-decoration: underline;
-  font-size: 0.95rem;
+  font-size: 0.65rem;
 
   &:hover {
     color: #ffcc80;
@@ -71,6 +95,8 @@ const LinkTag = styled.a`
 `;
 
 const Description = styled.div`
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.8);
 `;
 
@@ -81,10 +107,11 @@ const BulletList = styled.ul`
 `;
 
 const BulletPoint = styled.li`
+  font-family: 'Press Start 2P', cursive;
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.5rem;
-  line-height: 1.6;
+  line-height: 1.8;
 
   &:before {
     content: '•';
@@ -100,15 +127,15 @@ const experience = [
     position: "Full Stack Developer Intern",
     period: "January 2025 - April 2025",
     links: {
-      live: "https://charismaticelectronics.vercel.app/", 
-      github: "https://charismaticelectronics.vercel.app/", 
+      live: "https://charismaticelectronics.vercel.app/",
+      github: "https://charismaticelectronics.vercel.app/",
       certificate: "https://charismaticelectronics.vercel.app/"
     },
     achievements: [
-      "Developed a responsive, full-featured e-commerce platform for transformer and custom electrical products using the MERN stack (MongoDB, Express, React, Node.js), ensuring optimal performance across various devices and screen sizes.",
-      "Built a robust ‘Custom Design’ form that allows users to upload files, input design specifications, and submit requests for custom electrical products, integrating Nodemailer to send email alerts upon form submission.",
-      "Implemented MongoDB data storage to efficiently manage user orders, and custom design requests, optimizing query performance and ensuring reliable data retrieval.",
-      "Followed best practices for version control using Git and collaborated closely with the design team to ensure seamless integration of front-end and back-end components."
+      "Developed a responsive e-commerce platform using the MERN stack.",
+      "Built a 'Custom Design' form with file upload and Nodemailer alerts.",
+      "Used MongoDB for efficient order and request data handling.",
+      "Followed Git best practices and collaborated with designers."
     ]
   },
   {
@@ -116,16 +143,15 @@ const experience = [
     position: "Software Intern",
     period: "May 2025 – July 2025",
     links: {
-      live: "https://charismaticelectronics.vercel.app/", 
-      github: "https://charismaticelectronics.vercel.app/", 
-      certificate: "https://charismaticelectronics.vercel.app/"   
+      live: "https://charismaticelectronics.vercel.app/",
+      github: "https://charismaticelectronics.vercel.app/",
+      certificate: "https://charismaticelectronics.vercel.app/"
     },
     achievements: [
-      "Designed and developed a quantum simulation software using Python and Qiskit to model key quantum protocols (entanglement, teleportation, etc.)",
-      "Built modular simulation architecture for creating quantum circuits, running statevector simulations, and visualizing results",
-      "Implemented teleportation and Bell state generation protocols with clear circuit diagrams and measurement analysis",
-      "Integrated data visualization tools (Matplotlib, Bloch spheres) to support interpretation of quantum state evolution",
-      "Followed software engineering best practices: version control (Git), code reviews, and functional testing"
+      "Built a quantum simulation suite using Python and Qiskit.",
+      "Created modular architecture for circuits and visualizations.",
+      "Simulated teleportation and Bell states with visual tools.",
+      "Used Git, testing, and code reviews throughout development."
     ]
   }
 ];
