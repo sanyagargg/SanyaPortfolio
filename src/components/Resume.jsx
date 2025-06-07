@@ -34,12 +34,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
 `;
 
 const Summary = styled.p`
-  font-size: 0.65rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.85);
   line-height: 2;
   margin-bottom: 3rem;
@@ -54,7 +54,7 @@ const DownloadButton = styled(motion.a)`
   backdrop-filter: blur(8px);
   border-radius: 30px;
   text-decoration: none;
-  font-size: 0.6rem;
+  font-size: 1rem;
   transition: transform 0.2s ease;
 
   &:hover {
