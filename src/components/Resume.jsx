@@ -2,11 +2,29 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ResumeSection = styled.section`
+  font-family: 'Press Start 2P', cursive;
   padding-top: 90px;
   min-height: 60vh;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  position: relative;
+  background: url('/resume.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 10, 10, 0.4); /* Dark overlay */
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const Container = styled.div`
@@ -16,29 +34,32 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
 `;
 
 const Summary = styled.p`
-  font-size: 1.1rem;
+  font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
+  line-height: 2;
   margin-bottom: 3rem;
 `;
 
 const DownloadButton = styled(motion.a)`
   display: inline-block;
   padding: 1rem 2rem;
-  background: white;
-  color: #0a0a0a;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
   border-radius: 30px;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 0.6rem;
   transition: transform 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
   }
 `;
 
